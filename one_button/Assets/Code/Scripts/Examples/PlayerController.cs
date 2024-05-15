@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// JumpBall implements IButtonlistener, an interface, which means that it has to implement those functions
 /// </summary>
-public class JumpBall : MonoBehaviour, IButtonListener
+public class PlayerController : MonoBehaviour, IButtonListener
 {
     [SerializeField] private float jumpForce = 3f;
     [SerializeField] private float maxHeight = 5f;
