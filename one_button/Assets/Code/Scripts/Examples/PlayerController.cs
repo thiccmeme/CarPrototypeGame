@@ -7,9 +7,8 @@ using UnityEngine;
 /// </summary>
 public class PlayerController : MonoBehaviour, IButtonListener
 {
-    [SerializeField] private float jumpForce = 3f;
-    [SerializeField] private float maxHeight = 5f;
-    [SerializeField] private float jumpSpeedIncrease = 1f;
+    [SerializeField] private float horizontalForce = 3f;
+    [SerializeField] private float horizSpeedIncrease = 1f;
     private Rigidbody2D _rb;
     private ButtonInfo _currentButton;
     
@@ -21,7 +20,7 @@ public class PlayerController : MonoBehaviour, IButtonListener
         _rb = GetComponent<Rigidbody2D>();
         var inputObject = FindObjectOfType<PlayerInputs>();
         inputObject.RegisterListener(this);
-        _rb.velocity = new Vector2(0, -jumpForce);
+        _rb.velocity = new Vector2(0, -horizontalForce);
     }
 
     // Update is called once per frame
@@ -34,28 +33,25 @@ public class PlayerController : MonoBehaviour, IButtonListener
     {
         if (_currentButton.CurrentState == ButtonState.Released)
         {
-            _rb.velocity = new Vector2(0, _rb.velocity.y - jumpSpeedIncrease * Time.fixedDeltaTime);
+            _rb.velocity = new Vector2(_rb.velocity.x - horizSpeedIncrease * Time.fixedDeltaTime, 0);
         }
     }
 
     public void ButtonHeld(ButtonInfo heldInfo)
     {
-        if(this.transform.position.y < maxHeight)
-            _rb.velocity = new Vector2(0, _rb.velocity.y + jumpSpeedIncrease * Time.fixedDeltaTime);
-        else 
-            _rb.velocity = new Vector2(0, 0);
+            _rb.velocity = new Vector2(_rb.velocity.x + horizSpeedIncrease * Time.fixedDeltaTime, 0);
         
     }
 
     public void ButtonPressed(ButtonInfo pressedInfo)
     {
-        _rb.velocity = new Vector2(0, _rb.velocity.y + jumpForce);
+        _rb.velocity = new Vector2(_rb.velocity.x + horizontalForce, 0);
         _currentButton = pressedInfo;
     }
 
     public void ButtonReleased(ButtonInfo releasedInfo)
     {
-        _rb.velocity = new Vector2(0, -jumpForce);
+        _rb.velocity = new Vector2(0, 0);
         _currentButton = releasedInfo;
     }
 }

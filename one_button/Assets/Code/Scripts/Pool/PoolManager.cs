@@ -24,10 +24,10 @@ public class PoolManager : Singleton<PoolManager>
     }
     #endregion
     #region Spawn
-    public PoolObject Spawn(string name)// spawn the object
+    public PoolObject Spawn(string objectName)// spawn the object
     {
         
-        Stack<PoolObject> objStack = stackDictionary[name]; //ensure it matches the correct name in the dictionary 
+        Stack<PoolObject> objStack = stackDictionary[objectName]; //ensure it matches the correct name in the dictionary 
         if(objStack.Count == 1) 
         {
             PoolObject poolObject = objStack.Peek();//is there already some alive?
