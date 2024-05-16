@@ -45,13 +45,13 @@ public class PlayerController : MonoBehaviour, IButtonListener
 
     public void ButtonPressed(ButtonInfo pressedInfo)
     {
-        _rb.velocity = new Vector2(_rb.velocity.x + horizontalForce, 0);
+        _rb.velocity = new Vector2(_rb.velocity.x + (_rb.velocity.x / 2), 0);
         _currentButton = pressedInfo;
     }
 
     public void ButtonReleased(ButtonInfo releasedInfo)
     {
-        _rb.velocity = new Vector2(0, 0);
+        _rb.velocity = new Vector2(_rb.velocity.x - (_rb.velocity.x / 2), 0);
         _currentButton = releasedInfo;
     }
 }
