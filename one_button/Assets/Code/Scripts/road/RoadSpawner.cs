@@ -16,7 +16,8 @@ public class RoadSpawner : MonoBehaviour
 
     protected void SpawnRoad()
     {   
-        Road newRoad = PoolManager.Instance.Spawn(road.name).GetComponent<Road>();
+        Debug.Log(road.name);
+        Road newRoad = PoolManager.Instance.Spawn("Road").GetComponent<Road>();
         newRoad.transform.position = startPos.transform.position;
     }
 
