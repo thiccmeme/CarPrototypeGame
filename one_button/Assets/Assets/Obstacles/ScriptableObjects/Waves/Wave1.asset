@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8cd73dbfa301be4f8d9cf3e5bf237b6, type: 3}
+  m_Name: Wave1
+  m_EditorClassIdentifier: 
+  <ObstaclesInWave>k__BackingField:
+  - {fileID: 11400000, guid: 51e43c5c97d710f4db19880a30e8dfbf, type: 2}
+  - {fileID: 11400000, guid: 195c9efc7873029499a8caa8d3a47972, type: 2}
+  - {fileID: 11400000, guid: c638a8d5f208b8e47bfbab5f5e0d97a0, type: 2}
+  <WaveDelay>k__BackingField: 5
+  <NumberToSpawn>k__BackingField: 10
