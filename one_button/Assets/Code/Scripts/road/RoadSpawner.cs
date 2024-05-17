@@ -6,29 +6,35 @@ using UnityEngine;
 public class RoadSpawner : MonoBehaviour
 {
     [SerializeField] protected Transform startPos;
+    
+    [SerializeField] protected Vector3 endPos;
 
     [SerializeField] protected PoolObject road;
+
+    [SerializeField] private float Speed;
+
+    public int roadCount = 0;
     // Start is called before the first frame update
     void Start()
     {
-        SpawnRoad();
+        StartCoroutine(RoadCheck());
     }
-
-    protected void SpawnRoad()
+    public void SpawnRoad()
     {   
+        //random which obstacle if 5 between 0-4 
+        //random for speed of obstacles
         Debug.Log(road.name);
         Road newRoad = PoolManager.Instance.Spawn("Road").GetComponent<Road>();
         newRoad.transform.position = startPos.transform.position;
+        roadCount++;
     }
 
-    private void FixedUpdate()
+    IEnumerator RoadCheck()
     {
-        // if number of roads is less than or equal to 2 then spawn new road.
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        for (int i = 0; i <= roadCount; i++)
+        {
+            SpawnRoad();
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }
