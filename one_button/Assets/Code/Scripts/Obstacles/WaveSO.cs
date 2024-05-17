@@ -4,7 +4,7 @@ using UnityEngine;
 public class WaveSO : ScriptableObject
 {
     [field: SerializeField]
-    public ObstacleSO[] ObstaclesInWave { get; private set; } //list of obstacles to spawn
+    public GameObject[] ObstaclesInWave { get; private set; } //list of obstacles to spawn
 
     [field: SerializeField]
     public float WaveDelay { get; private set; } //delay between each wave spawn

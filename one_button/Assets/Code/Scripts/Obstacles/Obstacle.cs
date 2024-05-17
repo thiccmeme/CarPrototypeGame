@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    public ObstacleSO obstacle;
-    Rigidbody _rb;
+    [SerializeField] private float _speed;
+    Rigidbody2D _rb;
 
     private void Awake()
     {
-        _rb = gameObject.GetComponent<Rigidbody>();
-        //_rb.isKinematic = true; //
+
+        _rb = gameObject.GetComponent<Rigidbody2D>();
     }
     private void FixedUpdate()
     {
@@ -25,8 +25,16 @@ public class Obstacle : MonoBehaviour
     {
         while (true)
         {
-            _rb?.MovePosition(_rb.position + -Vector3.forward * obstacle.Speed * Time.fixedDeltaTime);
+            _rb?.MovePosition(_rb.position + Vector2.down * _speed * Time.fixedDeltaTime); //move obstacle\car based on its speed
             yield return new WaitForFixedUpdate();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            Destroy(this.gameObject); //destroy obstacle when triggered with player
         }
     }
 }

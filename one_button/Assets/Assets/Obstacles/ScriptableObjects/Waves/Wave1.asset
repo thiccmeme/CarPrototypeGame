@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Wave1
   m_EditorClassIdentifier: 
   <ObstaclesInWave>k__BackingField:
-  - {fileID: 11400000, guid: 51e43c5c97d710f4db19880a30e8dfbf, type: 2}
-  - {fileID: 11400000, guid: 195c9efc7873029499a8caa8d3a47972, type: 2}
-  - {fileID: 11400000, guid: c638a8d5f208b8e47bfbab5f5e0d97a0, type: 2}
-  <WaveDelay>k__BackingField: 5
+  - {fileID: 3428999636898403519, guid: 5e952e32f5fa9f1429f91105dc6d239c, type: 3}
+  - {fileID: 2204611756611949212, guid: 2e18e3f69018218439aaaa57a84324bd, type: 3}
+  <WaveDelay>k__BackingField: 10
   <NumberToSpawn>k__BackingField: 10

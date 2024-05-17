@@ -11,22 +11,23 @@ public class WaveSpawner : MonoBehaviour
     private int _waveCount = 0;
     private float _waveDelay; //delay between each wave spawn
     private bool _isPaused = false; //is the wave spawner paused?
+    GameObject obstacleToSpawn;
 
     private void Awake()
     {
         _currentWave = waves[_waveCount];
         _waveDelay = _currentWave.WaveDelay;
+        _waveDelay = 1;
     }
 
     private void Update()
     {
-        Debug.Log("Delay" + _waveDelay);
         if (_isPaused) return;
 
-        if(Time.time >= _waveDelay)
+        if (Time.time >= _waveDelay)
         {
             SpawnWave();
-            //WaveCount();
+            WaveCount();
 
             _waveDelay = Time.time + _currentWave.WaveDelay;
         }
@@ -34,18 +35,15 @@ public class WaveSpawner : MonoBehaviour
 
     private void SpawnWave()
     {
-        
+
         for (int i = 0; i < _currentWave.NumberToSpawn; i++)
         {
             int obstacle = Random.Range(0, _currentWave.ObstaclesInWave.Length);
             int spawnPoint = Random.Range(0, spawnPoints.Length);
 
-            ObstacleSO obstacleSO = _currentWave.ObstaclesInWave[obstacle];
-
-            Debug.Log("Is spawning");
-            //ScriptableObject.CreateInstance<ObstacleSO>();
-            //ObstacleSO obstacleToSpawn = _currentWave.ObstaclesInWave[obstacle];
-            //Instantiate(obstacleToSpawn, spawnPoints[spawnPoint].position, spawnPoints[spawnPoint].rotation);
+            obstacleToSpawn = _currentWave.ObstaclesInWave[obstacle];
+            
+            Instantiate(obstacleToSpawn, spawnPoints[spawnPoint].position, spawnPoints[spawnPoint].rotation);
         }
     }
 
