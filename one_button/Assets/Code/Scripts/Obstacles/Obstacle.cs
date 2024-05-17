@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
+    public ObstacleSO obstacle;
     Rigidbody _rb;
-    [SerializeField] float speed = 5.0f;
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class Obstacle : MonoBehaviour
     {
         while (true)
         {
-            _rb?.MovePosition(_rb.position + -Vector3.forward * speed * Time.fixedDeltaTime);
+            _rb?.MovePosition(_rb.position + -Vector3.forward * obstacle.Speed * Time.fixedDeltaTime);
             yield return new WaitForFixedUpdate();
         }
     }
