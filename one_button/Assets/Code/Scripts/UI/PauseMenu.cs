@@ -14,13 +14,15 @@ public class PauseMenu : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(restartScene);
+        SceneManager.LoadScene(restartScene); // PlayerInput destroyed
     }
 
     public void HandlePauseMenu()
     {
         if (!IsGamePaused)
             Pause();
+        else
+            Resume();
     }
 
     //freeze game time, bring up pauseMenuUI, change IsGamePaused to true

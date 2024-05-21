@@ -67,7 +67,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
             ""id"": ""7936e43e-d9b2-41b3-99ed-f7a09be4afbf"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""41d86f22-1bed-49ea-a59d-b19bb0d557f5"",
                     ""expectedControlType"": ""Button"",
@@ -80,11 +80,11 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""060b512d-933b-4972-9e32-77616f6dc258"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""New action"",
+                    ""groups"": ""Mouse and Key"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -126,7 +126,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         m_PlayerControl_Interact = m_PlayerControl.FindAction("Interact", throwIfNotFound: true);
         // MenuControl
         m_MenuControl = asset.FindActionMap("MenuControl", throwIfNotFound: true);
-        m_MenuControl_Newaction = m_MenuControl.FindAction("New action", throwIfNotFound: true);
+        m_MenuControl_Pause = m_MenuControl.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -234,12 +234,12 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
     // MenuControl
     private readonly InputActionMap m_MenuControl;
     private List<IMenuControlActions> m_MenuControlActionsCallbackInterfaces = new List<IMenuControlActions>();
-    private readonly InputAction m_MenuControl_Newaction;
+    private readonly InputAction m_MenuControl_Pause;
     public struct MenuControlActions
     {
         private @GameInputs m_Wrapper;
         public MenuControlActions(@GameInputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_MenuControl_Newaction;
+        public InputAction @Pause => m_Wrapper.m_MenuControl_Pause;
         public InputActionMap Get() { return m_Wrapper.m_MenuControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -249,16 +249,16 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_MenuControlActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_MenuControlActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IMenuControlActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IMenuControlActions instance)
@@ -300,6 +300,6 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
     }
     public interface IMenuControlActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
