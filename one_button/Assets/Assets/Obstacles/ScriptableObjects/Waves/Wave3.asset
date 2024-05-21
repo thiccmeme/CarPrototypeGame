@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wave3
   m_EditorClassIdentifier: 
   <ObstaclesInWave>k__BackingField:
-  - {fileID: 9139023433016085477, guid: fbb7d92ffd59c6948945ba97bee02fcd, type: 3}
+  - {fileID: 3428999636898403519, guid: 5e952e32f5fa9f1429f91105dc6d239c, type: 3}
+  - {fileID: 2204611756611949212, guid: 2e18e3f69018218439aaaa57a84324bd, type: 3}
   <WaveDelay>k__BackingField: 5
   <NumberToSpawn>k__BackingField: 10

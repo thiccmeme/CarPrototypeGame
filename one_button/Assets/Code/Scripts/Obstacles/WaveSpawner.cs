@@ -1,62 +1,33 @@
+using System.Collections;
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
     [SerializeField]
     private Transform[] spawnPoints; //list of spawn points
-
-    public WaveSO[] waves; //list of wave scriptable objects
-
-    private WaveSO _currentWave;
-    private int _waveCount = 0;
-    private float _waveDelay; //delay between each wave spawn
+    [SerializeField]
+    private WaveSO[] waves; //list of wave scriptable objects
     private bool _isPaused = false; //is the wave spawner paused?
     GameObject obstacleToSpawn;
 
-    private void Awake()
+    private void Start()
     {
-        _currentWave = waves[_waveCount];
-        _waveDelay = _currentWave.WaveDelay;
-        _waveDelay = 1;
-    }
-
-    private void Update()
-    {
-        if (_isPaused) return;
-
-        if (Time.time >= _waveDelay)
+        for (int i = 0; i < waves.Length; i++)
         {
-            SpawnWave();
-            WaveCount();
-
-            _waveDelay = Time.time + _currentWave.WaveDelay;
+            StartCoroutine(SpawnObstacle(waves[i], spawnPoints[i]));
         }
     }
 
-    private void SpawnWave()
+    IEnumerator SpawnObstacle(WaveSO _wave, Transform spawnPoint)
     {
-
-        for (int i = 0; i < _currentWave.NumberToSpawn; i++)
+        while (true)
         {
-            int obstacle = Random.Range(0, _currentWave.ObstaclesInWave.Length);
-            int spawnPoint = Random.Range(0, spawnPoints.Length);
+            int obstacle = Random.Range(0, _wave.ObstaclesInWave.Length);
+            Debug.Log("Wave: " + _wave + " Obstacle: " + obstacle);
 
-            obstacleToSpawn = _currentWave.ObstaclesInWave[obstacle];
-            
-            Instantiate(obstacleToSpawn, spawnPoints[spawnPoint].position, spawnPoints[spawnPoint].rotation);
+            obstacleToSpawn = _wave.ObstaclesInWave[obstacle];
+            Instantiate(obstacleToSpawn, spawnPoint.position, spawnPoint.rotation);
+            yield return new WaitForSeconds(_wave.WaveDelay);
         }
-    }
-
-    private void WaveCount()
-    {
-        if (_waveCount + 1 < waves.Length)
-        {
-            _waveCount++;
-            _currentWave = waves[_waveCount];
-        }
-        //else
-        //{
-        //    _isPaused = true;
-        //}
     }
 }
