@@ -6,7 +6,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     GameObject pauseMenuUI;
     [SerializeField]
-    string restartScene;
+    string restartScene; //scene name
     [SerializeField]
     bool IsGamePaused = false;
 

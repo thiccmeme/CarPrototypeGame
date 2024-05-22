@@ -589,7 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3e163d52b21be4f91455c5f2d4150d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: OneButtonScene
+  scene: LevelGymS
   mainMenuUI: {fileID: 647214654}
   creditsUI: {fileID: 1554157084}
 --- !u!1 &739427908
