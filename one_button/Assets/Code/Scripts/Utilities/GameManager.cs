@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    #region Restart
-    [SerializeField]
-    GameOverMenu _gameOverMenu;
 
+    [SerializeField] private String _scene;
+    #region Restart
     public void Restart()
     {
-        _gameOverMenu.HandleGameOver();
+        SceneManager.LoadScene(_scene);
+        Time.timeScale = 1.0f;
     }
     #endregion
 }

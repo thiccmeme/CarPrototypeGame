@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
 {
      private GameManager _gameManager;
 
+     [SerializeField]
+     private GameOverMenu _gameOverMenu;
+
     public int pHealth;
 
     private Animation anim;
@@ -15,6 +18,7 @@ public class Player : MonoBehaviour
     {
         _gameManager = FindObjectOfType<GameManager>();
         
+
     }
     
     private void FixedUpdate()
@@ -23,7 +27,7 @@ public class Player : MonoBehaviour
         {
             //die
             Debug.Log("ded");
-           
+            _gameOverMenu.HandleGameOver();
             Invoke("Re", 0.5f);
         }
     }
@@ -39,6 +43,7 @@ public class Player : MonoBehaviour
 
     private void Re()
     {
-        _gameManager.Restart();
+        
+        //_gameManager.Restart();
     }
 }

@@ -8,10 +8,12 @@ public class GameOverMenu : MonoBehaviour
     [SerializeField]
     string LoadScene; //scene name
 
+    private GameManager _gameManager;
+
     //set game time back to normal and load restartScene
     public void RestartGame()
     {
-        SceneManager.LoadScene(LoadScene);
+        _gameManager.Restart();
     }
     public void HandleGameOver()
     {
@@ -23,5 +25,10 @@ public class GameOverMenu : MonoBehaviour
         Cursor.visible = true;
 
         gameOverMenuUI.SetActive(true);
+    }
+
+    void Awake()
+    {
+        _gameManager = FindObjectOfType<GameManager>();
     }
 }

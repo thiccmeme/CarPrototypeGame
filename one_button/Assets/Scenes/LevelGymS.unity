@@ -230,6 +230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[GameOver]'
       objectReference: {fileID: 0}
+    - target: {fileID: 2466522281452540083, guid: 8a36a36a75c54b545b575fca9e1273ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6331106973035133632, guid: 8a36a36a75c54b545b575fca9e1273ef, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1114,7 +1118,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1936035257}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1630,7 +1634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c06b674a47edb4b8fa79f524d0d6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameOverMenu: {fileID: 1018951506}
+  _scene: LevelGymS
 --- !u!4 &1965147459
 Transform:
   m_ObjectHideFlags: 0
@@ -1912,6 +1916,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1403955655881894395, guid: 6b461846051d3f64b8899dc8447e8270, type: 3}
+      propertyPath: _gameOverMenu
+      value: 
+      objectReference: {fileID: 1018951506}
     - target: {fileID: 1837885924429993629, guid: 6b461846051d3f64b8899dc8447e8270, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -1983,3 +1991,7 @@ SceneRoots:
   - {fileID: 1923142091}
   - {fileID: 1965147459}
   - {fileID: 1494040159}
+  - {fileID: 709136838}
+  - {fileID: 327004911}
+  - {fileID: 2092308710}
+  - {fileID: 1526781716}
