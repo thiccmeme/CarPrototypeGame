@@ -8,30 +8,23 @@ public class Player : MonoBehaviour
      private GameManager _gameManager;
 
     public int pHealth;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
+    private Animation anim;
+    
     private void Awake()
     {
         _gameManager = FindObjectOfType<GameManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
-
+    
     private void FixedUpdate()
     {
         if (pHealth <= 0)
         {
             //die
             Debug.Log("ded");
-            _gameManager.Restart();
+           
+            Invoke("Re", 0.5f);
         }
     }
 
@@ -42,5 +35,10 @@ public class Player : MonoBehaviour
             pHealth--;
             Debug.Log(pHealth);
         }
+    }
+
+    private void Re()
+    {
+        _gameManager.Restart();
     }
 }
