@@ -6,7 +6,7 @@ public class PoolManager : Singleton<PoolManager>
 {
     #region Start
     Dictionary<string, Stack<PoolObject>> stackDictionary = new Dictionary<string, Stack<PoolObject>>();
-    void Start()
+    void Awake()
     {
         PoolManager.Instance.Load();
     }
