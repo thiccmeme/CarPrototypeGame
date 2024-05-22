@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 7
+  _defaultSpeed: 7
   speedChangeCoeffecient: 0.005
 --- !u!50 &9221942054458858803
 Rigidbody2D:
