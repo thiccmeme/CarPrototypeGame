@@ -10,10 +10,11 @@ public class PlayerController : MonoBehaviour, IButtonListener
 {
     [SerializeField] private float horizontalForce = 3f;
     [SerializeField] private float horizSpeedIncrease = 1f;
-    private float currentRotation = 0f;
-    private float newRotation = 0f;
-    private float lastKnownRotation = 0f;
     [SerializeField] private float rotationSmoothness = 0.5f;
+    [SerializeField] private Quaternion currentRotation;
+    private Quaternion newAngle;
+    [SerializeField] private Quaternion maxAngle = quaternion.Euler(0f, 0f, 45f);
+    [SerializeField] private Quaternion minAngle = quaternion.Euler(0f, 0f, -45f);
     private Rigidbody2D _rb;
     private ButtonInfo _currentButton;
     private GameObject _car;
@@ -42,8 +43,8 @@ public class PlayerController : MonoBehaviour, IButtonListener
         {
             _rb.velocity = new Vector2(_rb.velocity.x - horizSpeedIncrease * Time.fixedDeltaTime, 0);
         }
-        currentRotation = Mathf.Clamp(Mathf.Lerp(lastKnownRotation, newRotation, rotationSmoothness), -45f, 45f);
-        UpdateCarRotation(currentRotation);
+        currentRotation = Quaternion.Slerp( currentRotation, newAngle, rotationSmoothness * Time.fixedDeltaTime); 
+        _car.transform.localRotation = currentRotation;
     }
 
     public void ButtonHeld(ButtonInfo heldInfo)
@@ -54,21 +55,19 @@ public class PlayerController : MonoBehaviour, IButtonListener
     public void ButtonPressed(ButtonInfo pressedInfo)
     {
         _rb.velocity = new Vector2(_rb.velocity.x + (_rb.velocity.x / 2), 0);
-        lastKnownRotation = currentRotation;
-        newRotation = -45f;
+        newAngle = minAngle;
         _currentButton = pressedInfo;
     }
 
     public void ButtonReleased(ButtonInfo releasedInfo)
     {
         _rb.velocity = new Vector2(_rb.velocity.x - (_rb.velocity.x / 2), 0);
-        lastKnownRotation = currentRotation;
-        newRotation = 45f;
+        newAngle = maxAngle;
         _currentButton = releasedInfo;
     }
 
-    private void UpdateCarRotation(float rotation)
+    private void UpdateCarRotation(Quaternion rotation)
     {
-        _car.transform.Rotate(0f, 0f, rotation);
+        _car.transform.localRotation = rotation;
     }
 }
