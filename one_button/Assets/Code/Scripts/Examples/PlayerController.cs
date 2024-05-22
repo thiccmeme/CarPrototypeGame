@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour, IButtonListener
         inputObject.RegisterListener(this);
         _rb.velocity = new Vector2(0, -horizontalForce);
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -54,4 +55,7 @@ public class PlayerController : MonoBehaviour, IButtonListener
         _rb.velocity = new Vector2(0, 0);
         _currentButton = releasedInfo;
     }
-}
+
+
+
+   }
