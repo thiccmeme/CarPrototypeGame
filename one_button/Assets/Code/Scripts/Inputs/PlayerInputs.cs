@@ -13,6 +13,8 @@ public class PlayerInputs : MonoBehaviour
     private UnityEvent<ButtonInfo> _buttonReleased;
     private UnityEvent<ButtonInfo> _buttonPressed;
     public List<ButtonInfo> _buttonInputs = new List<ButtonInfo>();
+    [SerializeField]
+    PauseMenu pauseMenu;
 
     public void Awake()
     {
@@ -42,9 +44,13 @@ public class PlayerInputs : MonoBehaviour
                 _currentButton.CurrentState = ButtonState.Released;
                 _buttonReleased.Invoke(_currentButton);
             };
-            
+            _gameInputs.MenuControl.Pause.performed += (val) =>
+            {
+                pauseMenu.HandlePauseMenu();
+            };
         }
         _gameInputs.PlayerControl.Enable();
+        _gameInputs.MenuControl.Enable();
     }
 
     public void RegisterListener(IButtonListener buttonListener)
