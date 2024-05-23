@@ -229,9 +229,9 @@ GameObject:
   - component: {fileID: 212666434}
   - component: {fileID: 212666433}
   - component: {fileID: 212666432}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: boundsLeft
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1150,19 +1150,19 @@ PrefabInstance:
       objectReference: {fileID: 1018951506}
     - target: {fileID: 5137370627126043727, guid: 1124894f5adf3274580936ecc0b0098b, type: 3}
       propertyPath: horizontalForce
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5137370627126043727, guid: 1124894f5adf3274580936ecc0b0098b, type: 3}
       propertyPath: horizSpeedIncrease
-      value: 1
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5156651325135647523, guid: 1124894f5adf3274580936ecc0b0098b, type: 3}
       propertyPath: m_Size.x
-      value: 3.0551517
+      value: 1.38
       objectReference: {fileID: 0}
     - target: {fileID: 5156651325135647523, guid: 1124894f5adf3274580936ecc0b0098b, type: 3}
       propertyPath: m_Size.y
-      value: 6.241327
+      value: 4.82
       objectReference: {fileID: 0}
     - target: {fileID: 5156651325135647523, guid: 1124894f5adf3274580936ecc0b0098b, type: 3}
       propertyPath: m_Enabled
@@ -1170,11 +1170,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5156651325135647523, guid: 1124894f5adf3274580936ecc0b0098b, type: 3}
       propertyPath: m_Offset.x
-      value: 0.018896699
+      value: -0.027161837
       objectReference: {fileID: 0}
     - target: {fileID: 5156651325135647523, guid: 1124894f5adf3274580936ecc0b0098b, type: 3}
       propertyPath: m_Offset.y
-      value: 0.03639531
+      value: 0.013366222
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156651325135647523, guid: 1124894f5adf3274580936ecc0b0098b, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5915544081431715808, guid: 1124894f5adf3274580936ecc0b0098b, type: 3}
       propertyPath: textManager

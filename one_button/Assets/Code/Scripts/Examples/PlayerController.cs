@@ -45,13 +45,19 @@ public class PlayerController : MonoBehaviour, IButtonListener
         {
             _rb.velocity = new Vector2(_rb.velocity.x - horizSpeedIncrease * Time.fixedDeltaTime, 0);
         }
+        else
+        {
+            
+            _rb.velocity = new Vector2(_rb.velocity.x + horizSpeedIncrease * Time.fixedDeltaTime, 0);
+            
+        }
         currentRotation = Quaternion.Slerp( currentRotation, newAngle, rotationSmoothness * Time.fixedDeltaTime); 
         _car.transform.localRotation = currentRotation;
     }
 
     public void ButtonHeld(ButtonInfo heldInfo)
     {
-            _rb.velocity = new Vector2(_rb.velocity.x + horizSpeedIncrease * Time.fixedDeltaTime, 0);
+            //_rb.velocity = new Vector2(_rb.velocity.x + horizSpeedIncrease * Time.fixedDeltaTime, 0);
     }
 
     public void ButtonPressed(ButtonInfo pressedInfo)
