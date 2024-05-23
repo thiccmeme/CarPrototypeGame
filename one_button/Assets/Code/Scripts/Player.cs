@@ -8,6 +8,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
      private GameManager _gameManager;
+     [SerializeField]
+     private PlayerHUD _playerHUD;
 
      [SerializeField]
      private GameOverMenu _gameOverMenu;
@@ -25,6 +27,9 @@ public class Player : MonoBehaviour
 
     public AudioClip Crash;
     public AudioClip Collect;
+    
+    [SerializeField]
+    private int scoreToIncrease;
 
 
     private void Awake()
@@ -76,7 +81,9 @@ public class Player : MonoBehaviour
         else if (col.gameObject.tag == "Collectable")
         {
             TextDamage.CollideCollectable();
-            pScore++;
+            pScore = pScore + scoreToIncrease;
+            _playerHUD._score = _playerHUD._score + scoreToIncrease;
+            
 
             // Find the AudioSource component and play the audio clip
             AudioSource collectableAudio = GetComponent<AudioSource>();

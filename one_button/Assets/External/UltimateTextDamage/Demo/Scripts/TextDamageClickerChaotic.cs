@@ -23,7 +23,7 @@ namespace Guirao.UltimateTextDamage
         
         public void CollideCollectable()
         {
-            textManager.Add( ( "+1 POINT" ).ToString( ) , overrideTransformCollectable != null ? overrideTransformCollectable : transform, "collectable" );
+            textManager.Add( ( "+100 POINT" ).ToString( ) , overrideTransformCollectable != null ? overrideTransformCollectable : transform, "collectable" );
         }
     }
 }

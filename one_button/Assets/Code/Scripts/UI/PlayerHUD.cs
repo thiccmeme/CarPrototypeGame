@@ -7,7 +7,7 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] private TMP_Text _playerHealthText;
     private Player _player; 
     private float _timer;
-    private int _score = 0;
+    public int _score = 0;
     private int _currentHealth;
 
     private void Awake()
