@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] private float _speed;
+    [SerializeField] public float _speed;
     Rigidbody2D _rb;
+    [SerializeField]
+    public float _defaultSpeed; 
     [SerializeField] private float speedChangeCoeffecient;
     
     private void Awake()
     {
-
         _rb = gameObject.GetComponent<Rigidbody2D>();
     }
     private void FixedUpdate()

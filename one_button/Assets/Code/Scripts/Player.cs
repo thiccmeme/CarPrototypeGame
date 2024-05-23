@@ -1,11 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security;
 using Guirao.UltimateTextDamage;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+     private GameManager _gameManager;
+
+     [SerializeField]
+     private GameOverMenu _gameOverMenu;
+
+     [SerializeField] private float _invulnerabilityTime = 3f;
+
+     private GameObject _car;
+
     private GameManager _gameManager;
     public int pScore;
     public int pHealth;
@@ -21,6 +31,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _gameManager = FindObjectOfType<GameManager>();
+        _car = GameObject.Find("Car");
     }
 
     private void Start()
@@ -34,7 +45,7 @@ public class Player : MonoBehaviour
         {
             //die
             Debug.Log("ded");
-
+            _gameOverMenu.HandleGameOver();
             Invoke("Re", 0.5f);
         }
     }
@@ -59,6 +70,7 @@ public class Player : MonoBehaviour
         {
             TextDamage.CollideObstacle();
             pHealth--;
+            StartCoroutine(PainFlash());
             ObstacleAudio();
             Debug.Log(pHealth);
         }
@@ -86,6 +98,21 @@ public class Player : MonoBehaviour
 
     private void Re()
     {
-        _gameManager.Restart();
+        
+        //_gameManager.Restart();
+    }
+
+    IEnumerator PainFlash()
+    {
+        Color alpha = _car.GetComponent<SpriteRenderer>().color;
+        alpha.a = 0.5f;
+        _car.GetComponent<SpriteRenderer>().color = alpha;
+        _car.GetComponent<BoxCollider2D>().enabled = false;
+        Debug.Log("hit");
+        yield return new WaitForSeconds(_invulnerabilityTime);
+        alpha.a = 1.0f;
+        _car.GetComponent<BoxCollider2D>().enabled = true;
+        _car.GetComponent<SpriteRenderer>().color = alpha;
+        Debug.Log("finished");
     }
 }
