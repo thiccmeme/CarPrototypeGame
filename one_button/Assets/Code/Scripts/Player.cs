@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
 
      private GameObject _car;
 
-    private GameManager _gameManager;
     public int pScore;
     public int pHealth;
     public TextDamageClickerChaotic TextDamage;
