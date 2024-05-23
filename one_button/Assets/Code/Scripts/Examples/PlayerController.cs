@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Guirao.UltimateTextDamage;
 using UnityEngine;
 /// <summary>
 /// JumpBall implements IButtonlistener, an interface, which means that it has to implement those functions
@@ -11,18 +12,22 @@ public class PlayerController : MonoBehaviour, IButtonListener
     [SerializeField] private float horizSpeedIncrease = 1f;
     private Rigidbody2D _rb;
     private ButtonInfo _currentButton;
-    
     private PlayerInputs inputObject;
     
     void Awake()
     {
         _currentButton.CurrentState = ButtonState.Released;
         _rb = GetComponent<Rigidbody2D>();
-        var inputObject = FindObjectOfType<PlayerInputs>();
-        inputObject.RegisterListener(this);
         _rb.velocity = new Vector2(0, -horizontalForce);
     }
-    
+
+    private void Start()
+    {
+        var inputObject = FindObjectOfType<PlayerInputs>();
+        inputObject.RegisterListener(this);
+
+    }
+
 
     // Update is called once per frame
     void Update()

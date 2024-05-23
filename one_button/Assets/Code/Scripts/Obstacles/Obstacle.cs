@@ -6,7 +6,7 @@ public class Obstacle : MonoBehaviour
     [SerializeField] private float _speed;
     Rigidbody2D _rb;
     [SerializeField] private float speedChangeCoeffecient;
-
+    
     private void Awake()
     {
 

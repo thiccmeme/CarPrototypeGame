@@ -6,11 +6,12 @@ TagManager:
   tags:
   - RoadEnd
   - Obstacle
+  - Collectable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Collectable
   - Water
   - UI
   - Player

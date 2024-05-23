@@ -8,5 +8,9 @@ public class WaveDespawn : MonoBehaviour
         {
             Destroy(col.gameObject);
         }
+        if (col.gameObject.tag == "Collectable")
+        {
+            Destroy(col.gameObject);
+        }
     }
 }

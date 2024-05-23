@@ -9,6 +9,11 @@ public class WaveSpawner : MonoBehaviour
     private WaveSO[] waves; //list of wave scriptable objects
     private bool _isPaused = false; //is the wave spawner paused?
     GameObject obstacleToSpawn;
+    
+    [SerializeField]
+    private GameObject[] collectables;
+    [SerializeField]
+    private float collectableSpawnChance = 0.5f; 
 
     private void Start()
     {
@@ -27,6 +32,17 @@ public class WaveSpawner : MonoBehaviour
 
             obstacleToSpawn = _wave.ObstaclesInWave[obstacle];
             Instantiate(obstacleToSpawn, spawnPoint.position, spawnPoint.rotation);
+
+            // Random chance to spawn a collectable
+            if (Random.value < collectableSpawnChance)
+            {
+                // Choose a random spawn point for the collectable
+                Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+                GameObject collectableToSpawn = collectables[Random.Range(0, collectables.Length)];
+                Instantiate(collectableToSpawn, randomSpawnPoint.position, randomSpawnPoint.rotation);
+            }
+            
+                
             yield return new WaitForSeconds(_wave.WaveDelay);
         }
     }
