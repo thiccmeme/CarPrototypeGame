@@ -7,14 +7,16 @@ public class WaveSpawner : MonoBehaviour
     private Transform[] spawnPoints; //list of spawn points
     [SerializeField]
     private WaveSO[] waves; //list of wave scriptable objects
-    private bool _isPaused = false; //is the wave spawner paused?
     GameObject obstacleToSpawn;
 
     private void Start()
     {
-        for (int i = 0; i < waves.Length; i++)
+        if (waves.Length == spawnPoints.Length)
         {
-            StartCoroutine(SpawnObstacle(waves[i], spawnPoints[i]));
+            for (int i = 0; i < waves.Length; i++)
+            {
+                StartCoroutine(SpawnObstacle(waves[i], spawnPoints[i]));
+            }
         }
     }
 
@@ -22,8 +24,7 @@ public class WaveSpawner : MonoBehaviour
     {
         while (true)
         {
-            int obstacle = Random.Range(0, _wave.ObstaclesInWave.Length);
-            Debug.Log("Wave: " + _wave + " Obstacle: " + obstacle);
+            int obstacle = Random.Range(0, _wave.ObstaclesInWave.Length); //generate a random obstacle int/index from the list
 
             obstacleToSpawn = _wave.ObstaclesInWave[obstacle];
             Instantiate(obstacleToSpawn, spawnPoint.position, spawnPoint.rotation);
