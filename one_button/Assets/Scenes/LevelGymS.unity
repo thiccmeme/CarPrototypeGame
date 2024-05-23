@@ -1061,11 +1061,11 @@ PrefabInstance:
       objectReference: {fileID: 1018951506}
     - target: {fileID: 5137370627126043727, guid: 1124894f5adf3274580936ecc0b0098b, type: 3}
       propertyPath: horizontalForce
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5137370627126043727, guid: 1124894f5adf3274580936ecc0b0098b, type: 3}
       propertyPath: horizSpeedIncrease
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6571325782784775618, guid: 1124894f5adf3274580936ecc0b0098b, type: 3}
       propertyPath: m_LocalPosition.x
